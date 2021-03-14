@@ -16,5 +16,5 @@ func HelloService(request HelloRequest) HelloResponse {
 
 func main() {
 	response := HelloService(HelloRequest{"hi"})
-    fmt.Println(response.Msg)
+	fmt.Println(response.Msg)
 }
