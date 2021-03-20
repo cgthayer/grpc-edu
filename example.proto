@@ -1,0 +1,31 @@
+syntax = "proto3";
+package example;
+
+import "google/protobuf/wrappers.proto";
+
+message OptionalBase {
+    int32 i = 1;
+}
+
+message OptionalField {
+    optional int32 i = 1;
+}
+
+message OptionalOneof {
+    oneof test_oneof {
+        int32 i = 1;
+    }
+}
+
+message OptionalInt {
+    Int32Value i = 1;
+}
+
+message OptionalEnum {
+    enum OptionalValue {
+        UNKNOWN = 0;
+        ONE = 1;
+        TWO = 2;
+    }
+    OptionalValue i = 1;
+}
