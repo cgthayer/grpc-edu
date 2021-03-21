@@ -11,8 +11,10 @@ check:
 example: check
 	protoc -I=. --go_out=. example.proto
 
+PKG=github.com/cgthayer/grpc-edu/examplepb
+
 optional_fields: example
-	GOPATH=`pwd`/generated:$$GOPATH go build optional_fields.go
+	GOPATH=`pwd`/$PKG:$${GOPATH} go build optional_fields.go
 
 hi:
 	go build hi.go

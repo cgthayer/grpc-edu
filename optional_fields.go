@@ -1,7 +1,7 @@
 package main
 
 import (
-	"examplepb"
+	pb "github.com/cgthayer/grpc-edu/gemerated/examplepb"
 
 	"fmt"
 	"log"
@@ -10,8 +10,7 @@ import (
 )
 
 func main() {
-	
-	base := example.OptionalBase{
+	base := pb.OptionalBase{
 		I: 123
 	}
 
@@ -19,7 +18,6 @@ func main() {
 	if err != nil {
 		log.Fatalln("Boom")
 	}
-	fmt.Printf("base %d\n", out.Size)
-	
+	fmt.Printf("base %d\n", out.Length)
 }
 
