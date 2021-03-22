@@ -14,7 +14,7 @@ example: check
 PKG=github.com/cgthayer/grpc-edu/examplepb
 
 optional_fields: example
-	GOPATH=`pwd`/$PKG:$${GOPATH} go build optional_fields.go
+	GOPATH=`pwd`/$(PKG):$${GOPATH} go build optional_fields.go
 
 hi:
 	go build hi.go
