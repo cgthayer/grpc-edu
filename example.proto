@@ -1,11 +1,9 @@
 syntax = "proto3";
 package example;
 
-// option go_package = "github.com/cgthayer/grpc-edu/examplepb";
-// option go_package = "examplepb";
 option go_package = "generated/examplepb";
 
-// import "google/protobuf/wrappers.proto";
+import "google/protobuf/wrappers.proto";
 
 message OptionalBase {
     int32 i = 1;
@@ -22,7 +20,7 @@ message OptionalOneof {
 }
 
 message OptionalInt {
-//    google.protobuf.Int32Value i = 1;
+    google.protobuf.Int32Value i = 1;
 }
 
 message OptionalEnum {

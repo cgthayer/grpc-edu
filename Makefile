@@ -24,3 +24,4 @@ init:
 	@echo Protoc Version $(protoc --version)
 	go get -u google.golang.org/protobuf/cmd/protoc-gen-go
 	go install google.golang.org/protobuf/cmd/protoc-gen-go
+

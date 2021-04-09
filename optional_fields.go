@@ -7,6 +7,7 @@ import (
 	"log"
 
 	"github.com/golang/protobuf/proto"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func main() {
@@ -25,12 +26,24 @@ func main() {
 	}
 	print_size(&opt2, "optional with value")
 
-	// oneof := pb.OptionalOneof{
-	// 	pb.OptionalOneof.TestOneof{
-	// 		I: &int_i,
-	// 	}
-	// }
-	// print_size(&oneof, "oneof")
+	oneof1 := pb.OptionalOneof{}
+	print_size(&oneof1, "oneof no value")
+
+	oneof2 := pb.OptionalOneof{
+		TestOneof: &pb.OptionalOneof_I{
+			I: int_i,
+		},
+	}
+	print_size(&oneof2, "oneof with int")
+
+	opt_int1 := pb.OptionalInt{
+		I: nil,
+	}
+	print_size(&opt_int1, "optional Int32Value no value")
+	opt_int2 := pb.OptionalInt{
+		I: &wrapperspb.Int32Value{Value: int_i},
+	}
+	print_size(&opt_int2, "optional Int32Value with value")
 
 	opt_enum := pb.OptionalEnum{
 		I: 1,
@@ -43,8 +56,8 @@ func print_size(ptr proto.Message, msg string) {
 	if err != nil {
 		log.Fatalln("Boom")
 	}
-	fmt.Printf("%s %d\n", msg, len(out))
-	for x := 0; x < len(out); x++ {
-		fmt.Printf("%d    %08b\n", x, out[x])
+	fmt.Printf("%s len=%d\n", msg, len(out))
+	for i, v := range out {
+		fmt.Printf("  %d: %08b\n", i, v)
 	}
 }
